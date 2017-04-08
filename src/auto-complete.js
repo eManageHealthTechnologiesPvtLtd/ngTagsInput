@@ -16,6 +16,8 @@
  *    the source option after the last keystroke.
  * @param {number=} [minLength=3] Minimum number of characters that must be entered before evaluating the expression
  *    in the source option.
+ * @param {boolean=} [addOnTab=true] Flag indicating that the selected match will be automatically selected once
+ *    the tab key is pressed.
  * @param {boolean=} [highlightMatchedText=true] Flag indicating that the matched text will be highlighted in the
  *    suggestions list.
  * @param {number=} [maxResultsToShow=10] Maximum number of results to be displayed at a time.
@@ -154,7 +156,8 @@ tagsInput.directive('autoComplete', function($document, $timeout, $sce, $q, tags
                 loadOnEmpty: [Boolean, false],
                 loadOnFocus: [Boolean, false],
                 selectFirstMatch: [Boolean, true],
-                displayProperty: [String, '']
+                displayProperty: [String, ''],
+                addOnTab: [Boolean, true]
             });
 
             $scope.suggestionList = new SuggestionList($scope.source, $scope.options, $scope.events);
@@ -254,7 +257,7 @@ tagsInput.directive('autoComplete', function($document, $timeout, $sce, $q, tags
                             suggestionList.reset();
                             handled = true;
                         }
-                        else if (key === KEYS.enter || key === KEYS.tab) {
+                        else if (key === KEYS.enter || (scope.options.addOnTab && key === KEYS.tab)) {
                             handled = scope.addSuggestion();
                         }
                     }
