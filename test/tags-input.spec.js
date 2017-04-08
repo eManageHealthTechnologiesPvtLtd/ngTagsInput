@@ -481,6 +481,38 @@ describe('tags-input directive', function() {
             expect(isolateScope.options.tabindex).toBeNull();
         });
     });
+    describe('add-on-tab option', function() {
+           it('adds a new tag when the tab key is pressed and the option is true', function() {
+               // Arrange
+             compile('add-on-tab="true"');
+ 
+             // Act
+             newTag('foo', KEYS.tab);
+ 
+             // Assert
+             expect($scope.tags).toEqual([{ text: 'foo' }]);
+         });
+ 
+         it('does not add a new tag when the tab key is pressed and the option is false', function() {
+             // Arrange
+             compile('add-on-tab="false"');
+ 
+               // Act
+              newTag('foo', KEYS.tab);
+ 
+                // Assert
+               expect($scope.tags).toEqual([]);
+            });
+            
+            it('initializes the option to false', function() {
+              // Arrange/Act
+              compile();
+              
+               // Assert
+               expect(isolateScope.options.addOnTab).toBe(false);
+          });
+       });
+
 
     describe('add-on-enter option', function() {
         it('adds a new tag when the enter key is pressed and the option is true', function() {
