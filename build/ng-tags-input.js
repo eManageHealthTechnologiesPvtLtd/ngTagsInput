@@ -5,7 +5,7 @@
  * Copyright (c) 2013-2018 Michael Benford
  * License: MIT
  *
- * Generated at 2018-09-08 12:08:48 +0530
+ * Generated at 2018-09-08 13:25:33 +0530
  */
 (function (angular$1) {
 'use strict';
@@ -444,7 +444,7 @@ function TagsInputDirective($timeout, $document, $window, $q, tagsInputConfig, t
 
       events.on('tag-added', scope.onTagAdded).on('invalid-tag', scope.onInvalidTag).on('tag-removed', scope.onTagRemoved).on('tag-clicked', scope.onTagClicked).on('tag-dblclicked', function (tag) {
         if (options.allowDblclickToEdit) {
-          scope.editingTag.text(tag.text);
+          scope.editingTag.text(tag[options.displayProperty]);
           tag.editable = true;
           scope.isEditing = true;
         }
@@ -480,7 +480,7 @@ function TagsInputDirective($timeout, $document, $window, $q, tagsInputConfig, t
         var editingText = scope.editingTag.text();
         var tags = editingText.split(options.inputSplitPattern);
         var firstTagText = tags.shift();
-        tag.text = firstTagText;
+        tag[options.displayProperty] = firstTagText;
         tagList.addTextArr(tags);
         tag.editable = false;
         scope.isEditing = false;

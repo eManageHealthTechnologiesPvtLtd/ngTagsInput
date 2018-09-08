@@ -90,7 +90,7 @@ export default function TagsInputDirective($timeout, $document, $window, $q, tag
 
     self.addTextArr = textArr => {
       textArr.forEach(text => self.addText(text));
-    }
+    };
 
     self.add = tag => {
       let tagText = getTagText(tag);
@@ -396,7 +396,7 @@ export default function TagsInputDirective($timeout, $document, $window, $q, tag
         .on('tag-clicked', scope.onTagClicked)
         .on('tag-dblclicked', (tag) => {
           if (options.allowDblclickToEdit) {
-            scope.editingTag.text(tag.text);
+            scope.editingTag.text(tag[options.displayProperty]);
             tag.editable = true;
             scope.isEditing = true;
           }
@@ -440,7 +440,7 @@ export default function TagsInputDirective($timeout, $document, $window, $q, tag
           let editingText = scope.editingTag.text();
           let tags = editingText.split(options.inputSplitPattern);
           let firstTagText = tags.shift();
-          tag.text = firstTagText;
+          tag[options.displayProperty] = firstTagText;
           tagList.addTextArr(tags);
           tag.editable = false;
           scope.isEditing = false;
