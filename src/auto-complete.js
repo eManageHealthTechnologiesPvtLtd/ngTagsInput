@@ -14,6 +14,8 @@
  *    the source option after the last keystroke.
  * @param {number=} [minLength=3] Minimum number of characters that must be entered before evaluating the expression
  *    in the source option.
+ * @param {boolean=} [addOnTab=true] Flag indicating that the selected match will be automatically selected once
+ *    the tab key is pressed.
  * @param {boolean=} [highlightMatchedText=true] Flag indicating that the matched text will be highlighted in the
  *    suggestions list.
  * @param {number=} [maxResultsToShow=10] Maximum number of results to be displayed at a time.

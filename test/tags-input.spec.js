@@ -538,6 +538,19 @@ describe('tags-input directive', () => {
       // Assert
       expect($scope.tags).toEqual([{ text: 'foo' }]);
     });
+    /* describe('add-on-tab option', () => {
+      it('adds a new tag when the tab key is pressed and the option is true', function() {
+            // Arrange
+        compile();
+
+            // Act
+        newTag('foo', constants.KEYS.tab);
+
+            // Assert
+        expect($scope.tags).toEqual([{ text: 'foo' }]);
+      });
+    });*/
+
 
     it('does not add a new tag when the space key is pressed and the option is false', () => {
       // Arrange
