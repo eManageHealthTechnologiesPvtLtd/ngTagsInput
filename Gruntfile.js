@@ -84,7 +84,7 @@ module.exports = grunt => {
   grunt.registerTask('release', [
     'pack',
     'compress',
-    'changelog',
+   /* 'changelog',
     'replace:changelog',
     'shell:git',
     'copy:bower',
@@ -93,7 +93,7 @@ module.exports = grunt => {
     'dgeni',
     'copy:website',
     'update-website-version',
-    'shell:git_website'
+    'shell:git_website'*/
   ]);
   grunt.registerTask('default', ['pack']);
 };
